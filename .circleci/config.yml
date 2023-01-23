@@ -26,14 +26,14 @@ jobs:
       - heroku/install
       - run:
           name: Add Heroku remote
-          command: heroku git:remote -a $HEROKU_APP_NAME_FRONTEND
+          command: heroku git:remote -a $HEROKU_APP_NAME
       - run:
           name: Deploy to Heroku
           command: git subtree push --prefix dist heroku master
       - run:
           name: Check deployment status
           command: |
-            heroku ps --app $HEROKU_APP_NAME_FRONTEND
+            heroku ps --app $HEROKU_APP_NAME
 workflows:
   heroku_deploy:
     jobs:
