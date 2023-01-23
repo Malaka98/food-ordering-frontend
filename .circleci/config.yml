@@ -18,7 +18,7 @@ jobs:
           command: npm install
       - run:
           name: Build the application
-          command: ng build --prod
+          command: ng build
   deploy:
     executor: heroku/default
     steps:
