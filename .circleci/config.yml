@@ -31,7 +31,6 @@ jobs:
       - restore_cache:
           keys:
             - v1-dist-{{ checksum "package.json" }}
-            - v1-dist-
       - run:
           name: Add static.json
           command: |
