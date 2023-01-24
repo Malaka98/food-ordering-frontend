@@ -41,10 +41,10 @@ jobs:
           command: heroku git:remote -a $HEROKU_APP_NAME
       - run:
           name: add sube tree
-          command: git subtree add --prefix=dist heroku master
+          command: git subtree split --prefix dist -b dist
       - run:
           name: Deploy to Heroku
-          command: git subtree push --prefix dist heroku master
+          command: git push heroku dist:master
       - run:
           name: Check deployment status
           command: |
