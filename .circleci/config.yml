@@ -36,14 +36,8 @@ jobs:
           command: |
             echo '{ "root": "dist/", "routes": { "/**": "index.html" } }' > dist/static.json
       - run:
-          name: Add Heroku remote
-          command: heroku git:remote -a $HEROKU_APP_NAME
-      - run:
-          name: add sube tree
-          command: git subtree split --prefix dist -b dist
-      - run:
           name: Deploy to Heroku
-          command: git push heroku dist:master
+          command: git subtree push --prefix dist heroku master
       - run:
           name: Check deployment status
           command: |
