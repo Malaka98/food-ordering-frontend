@@ -19,11 +19,18 @@ jobs:
       - run:
           name: Build the application
           command: ng build
+      - save_cache:
+          paths:
+            - dist
   deploy:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
+      - restore_cache:
+          keys:
+            - v1-dist-{{ checksum "package.json" }}
+            - v1-dist-
       - run:
           name: Add Heroku remote
           command: heroku git:remote -a $HEROKU_APP_NAME
