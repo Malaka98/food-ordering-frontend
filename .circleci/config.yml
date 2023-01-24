@@ -20,7 +20,7 @@ jobs:
           name: Build the application
           command: ng build
       - save_cache:
-          key: dist_cash
+          key: v1-dist
           paths:
             - dist
   deploy:
