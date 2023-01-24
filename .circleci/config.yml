@@ -41,6 +41,9 @@ jobs:
           command: heroku git:remote -a $HEROKU_APP_NAME
       - run:
           name: Deploy to Heroku
+          command: git subtree add --prefix=dist heroku master
+      - run:
+          name: Deploy to Heroku
           command: git subtree push --prefix dist heroku master
       - run:
           name: Check deployment status
