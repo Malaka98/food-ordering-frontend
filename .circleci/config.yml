@@ -20,7 +20,7 @@ jobs:
           name: Build the application
           command: ng build
       - save_cache:
-          key: v1-dist
+          key: v1-dist-{{ checksum "package.json" }}
           paths:
             - dist
   deploy:
