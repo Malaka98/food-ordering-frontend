@@ -35,7 +35,9 @@ jobs:
           name: Add static.json
           command: |
             echo '{ "root": "dist/", "routes": { "/**": "index.html" } }' > dist/static.json
-      - heroku/deploy-via-git
+      - run:
+          name: Deploy to Heroku
+          command: git subtree push --prefix dist heroku master
       - run:
           name: Check deployment status
           command: |
