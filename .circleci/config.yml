@@ -34,7 +34,7 @@ jobs:
             - v1-dist-
       - run:
           name: Add static.json
-          command:
+          command: |
             echo '{ "root": "dist/", "routes": { "/**": "index.html" } }' > dist/static.json'
       - run:
           name: Add Heroku remote
