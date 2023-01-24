@@ -19,25 +19,12 @@ jobs:
       - run:
           name: Build the application
           command: ng build
-      - save_cache:
-          key: v1-dist-{{ checksum "package.json" }}
-          paths:
-            - dist
   deploy:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
-      - restore_cache:
-          keys:
-            - v1-dist-{{ checksum "package.json" }}
-      - run:
-          name: Add static.json
-          command: |
-            echo '{ "root": "dist/", "routes": { "/**": "index.html" } }' > dist/static.json
-      - run:
-          name: Deploy to Heroku
-          command: git subtree push --prefix dist heroku master
+      - heroku/deploy-via-git
       - run:
           name: Check deployment status
           command: |
