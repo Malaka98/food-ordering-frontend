@@ -40,7 +40,7 @@ jobs:
           name: Add Heroku remote
           command: heroku git:remote -a $HEROKU_APP_NAME
       - run:
-          name: Deploy to Heroku
+          name: add sube tree
           command: git subtree add --prefix=dist heroku master
       - run:
           name: Deploy to Heroku
