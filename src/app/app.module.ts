@@ -11,12 +11,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
+import { LoginComponent } from './components/login/login.component';
+import { SingUpComponent } from './components/sing-up/sing-up.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SingUpComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
