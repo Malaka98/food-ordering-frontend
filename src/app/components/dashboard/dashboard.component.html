@@ -1,0 +1,22 @@
+<div class="flex h-screen">
+  <div class="fixed w-full top-0 z-10">
+    <div class="w-full">
+      <app-nav-bar></app-nav-bar>
+    </div>
+    <!--      <h1 class="text-2xl p-5">Your Order History</h1>-->
+  </div>
+  <div class="w-64 bg-gray-200">
+    <div class="text-center py-4">
+      <h3 class="text-lg">Dashboard</h3>
+    </div>
+    <div class="py-4">
+      <a href="/dashboard" class="block px-4 py-2 text-gray-800">Home</a>
+      <a href="/dashboard/chat" class="block px-4 py-2 text-gray-800">Ask question</a>
+    </div>
+  </div>
+  <div class="bg-white relative flex-1 h-screen overflow-auto">
+    <div class="p-8 absolute w-full">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
