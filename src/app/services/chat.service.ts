@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {io, Socket} from "socket.io-client";
 import {Observable} from "rxjs";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
   private socket: Socket;
-  private url = 'ws://localhost:4000/chat'; // your server local path
+  private url = environment.SOCKET_URL; // your server local path
   constructor() {
     this.socket = io(this.url, {transports: ['websocket', 'polling', 'flashsocket']});
   }
