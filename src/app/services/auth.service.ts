@@ -15,6 +15,6 @@ export class AuthService {
   }
 
   isLogged() {
-    return this._http.get<any>(`${this._url}/user/isLogged`, {withCredentials: true})
+    return this._http.get<any>(`${this._url}/user`, {withCredentials: true})
   }
 }

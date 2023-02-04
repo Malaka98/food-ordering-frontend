@@ -7,6 +7,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ChatComponent} from "./components/chat/chat.component";
 import {AdminChatComponent} from "./components/admin-chat/admin-chat.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
+import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
   {path: "", redirectTo: "/home", pathMatch: "full"},
@@ -21,11 +22,12 @@ const routes: Routes = [
       // {path: "order-history", component: OrderHistoryComponent},
       // {path: "cart-page", component: CartPageComponent},
       {path: "chat", component: ChatComponent},
-      {path: "admin-chat", component: AdminChatComponent},
       // {path: "checkout", component: CheckoutComponent},
       {path: '**', component: PageNotFoundComponent}
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
+  {path: "admin-chat", component: AdminChatComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
