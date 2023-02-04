@@ -21,6 +21,7 @@ import {NzModalModule} from "ng-zorro-antd/modal";
 import {FoodsPageComponent} from './components/foods-page/foods-page.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {NzNotificationModule} from "ng-zorro-antd/notification";
+import {NzSkeletonModule} from "ng-zorro-antd/skeleton";
 
 registerLocaleData(en);
 
@@ -46,7 +47,8 @@ registerLocaleData(en);
     StoreModule.forRoot({}, {}),
     NzModalModule,
     NzNotificationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzSkeletonModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: en_US}

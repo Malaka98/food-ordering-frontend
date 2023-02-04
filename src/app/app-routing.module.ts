@@ -8,12 +8,14 @@ import {ChatComponent} from "./components/chat/chat.component";
 import {AdminChatComponent} from "./components/admin-chat/admin-chat.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 import {AuthGuard} from "./auth.guard";
+import {FoodsPageComponent} from "./components/foods-page/foods-page.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "/home", pathMatch: "full"},
   {path: "home", component: HomePageComponent},
   {path: "login", component: LoginComponent},
   {path: "sing-up", component: SingUpComponent},
+  {path: "foods", component: FoodsPageComponent},
   {
     path: "dashboard",
     component: DashboardComponent,
