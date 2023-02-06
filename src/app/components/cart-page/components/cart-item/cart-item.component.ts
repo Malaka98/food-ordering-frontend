@@ -53,6 +53,15 @@ export class CartItemComponent implements OnInit {
       )
     }
   }
+
+  onSelectHandler(item: any, qty: string) {
+    this._cartService.addToCart(item.id.toString(), Number(qty))
+    this._notification.create(
+      'info',
+      'Cart',
+      "Change Cart Item"
+    )
+  }
 }
 
 // this._cartService.getCart().subscribe({
