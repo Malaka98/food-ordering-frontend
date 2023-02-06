@@ -29,9 +29,11 @@ export class CartService {
   getCart() {
     return this._http.get<any>(`${this._restURL}/cart`, {withCredentials: true})
   }
+
   getCurrentCart(): void {
     this.socket.emit("get-current-cart")
   }
+
   getCartListener(): Observable<any> {
     try {
       return new Observable<any>((observable) => {
