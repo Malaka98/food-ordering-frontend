@@ -1,0 +1,79 @@
+<div role="list" class="border-t border-b border-gray-200 divide-y divide-gray-200">
+  <div *ngIf="cart.length == 0; else elseBlock">
+    <div class="alert alert-info shadow-lg flex justify-center">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+        </svg>
+        <span>Your Cart is Empty!</span>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <div *ngFor="let item of cart; index as i">
+      <div [id]="i">
+        <div class="flex py-6 sm:py-10">
+          <div class="flex-shrink-0">
+            <img [src]="item.itemUri" class="w-24 h-24 rounded-md object-center object-cover sm:w-48 sm:h-48">
+          </div>
+
+          <div class="ml-4 flex-1 flex flex-col justify-between sm:ml-6">
+            <div class="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+              <div>
+                <div class="flex justify-between">
+                  <h3 class="text-sm">
+                    <a href="#" class="font-medium text-gray-700 hover:text-gray-800">{{item.name}}</a>
+                  </h3>
+                </div>
+
+                <p class="mt-1 text-sm font-medium text-gray-900">${{item.itemPrice}}</p>
+              </div>
+
+              <div class="mt-4 sm:mt-0 sm:pr-9">
+                <label for="quantity-0" class="sr-only">Quantity, Basic Tee</label>
+                <select id="quantity-0" name="quantity-0"
+                        class="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+
+                <div class="absolute top-0 right-0">
+                  <button (click)="deleteItem(item.name)" type="button"
+                          class="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Remove</span>
+                    <!-- Heroicon name: solid/x -->
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                         aria-hidden="true">
+                      <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p class="mt-4 flex text-sm text-gray-700 space-x-2">
+              <!-- Heroicon name: solid/check -->
+              <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                   fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"/>
+              </svg>
+              <span>In stock</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

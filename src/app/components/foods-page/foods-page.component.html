@@ -70,22 +70,23 @@
         <div *ngFor="let food of foods; index as i">
           <!-- product - start -->
           <div [id]="i">
-            <a href="/dashboard/cart-page"
-               class="group h-80 block bg-gray-100 rounded-lg overflow-hidden relative mb-2 lg:mb-3">
+            <div class="cursor-pointer bg-indigo-500 hover:bg-indigo-600 p-4" (click)="addToCartHandler(food.id)"
+                 class="group h-80 block bg-gray-100 rounded-lg overflow-hidden relative mb-2 lg:mb-3">
               <img [src]="food.imgUri"
                    loading="lazy" alt="Photo by Rachit Tank"
-                   class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"/>
+                   class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200
+                    cursor-pointer"/>
 
               <span
                 class="bg-red-500 text-white text-sm tracking-wider uppercase rounded-br-lg absolute left-0 top-0 px-3 py-1.5">sale</span>
-            </a>
+            </div>
 
             <div>
-              <a href="/dashboard/cart-page"
-                 class="text-gray-500 hover:gray-800 lg:text-lg transition duration-100 mb-1">{{food.name}}</a>
+              <a
+                class="text-gray-500 hover:gray-800 lg:text-lg transition duration-100 mb-1">{{food.name}}</a>
 
               <div class="flex items-end gap-2">
-                <span class="text-gray-800 lg:text-lg font-bold">{{food.price}}</span>
+                <span class="text-gray-800 lg:text-lg font-bold">{{food.price}}$</span>
               </div>
             </div>
           </div>

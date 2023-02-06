@@ -22,6 +22,9 @@ import {FoodsPageComponent} from './components/foods-page/foods-page.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {NzNotificationModule} from "ng-zorro-antd/notification";
 import {NzSkeletonModule} from "ng-zorro-antd/skeleton";
+import {CartPageComponent} from './components/cart-page/cart-page.component';
+import {CartItemComponent} from './components/cart-page/components/cart-item/cart-item.component';
+import {NzMessageModule} from "ng-zorro-antd/message";
 
 registerLocaleData(en);
 
@@ -36,7 +39,9 @@ registerLocaleData(en);
     AdminChatComponent,
     ChatComponent,
     FoodsPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CartPageComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,8 @@ registerLocaleData(en);
     NzModalModule,
     NzNotificationModule,
     ReactiveFormsModule,
-    NzSkeletonModule
+    NzSkeletonModule,
+    NzMessageModule
   ],
   providers: [
     {provide: NZ_I18N, useValue: en_US}

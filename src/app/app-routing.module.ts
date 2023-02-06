@@ -9,6 +9,7 @@ import {AdminChatComponent} from "./components/admin-chat/admin-chat.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 import {AuthGuard} from "./auth.guard";
 import {FoodsPageComponent} from "./components/foods-page/foods-page.component";
+import {CartPageComponent} from "./components/cart-page/cart-page.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "/home", pathMatch: "full"},
@@ -22,7 +23,7 @@ const routes: Routes = [
     children: [
       // {path: "", redirectTo: "/dashboard/order-history", pathMatch: "full"},
       // {path: "order-history", component: OrderHistoryComponent},
-      // {path: "cart-page", component: CartPageComponent},
+      {path: "cart-page", component: CartPageComponent},
       {path: "chat", component: ChatComponent},
       // {path: "checkout", component: CheckoutComponent},
       {path: '**', component: PageNotFoundComponent}

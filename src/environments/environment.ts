@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
   BASE_URL: 'http://localhost:4000/api',
-  SOCKET_URL: 'ws://localhost:4000/chat'
+  CHAT_SOCKET_API: 'ws://localhost:4000/chat',
+  CART_SOCKET_API: 'ws://localhost:4000/cart'
 };

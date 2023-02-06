@@ -8,9 +8,9 @@ import {environment} from "../../environments/environment";
 })
 export class ChatService {
   private socket: Socket;
-  private url = environment.SOCKET_URL; // your server local path
+  private url = environment.CHAT_SOCKET_API; // your server local path
   constructor() {
-    this.socket = io(this.url, {transports: ['websocket', 'polling', 'flashsocket']});
+    this.socket = io(this.url, {transports: ['websocket', 'polling', 'flashsocket'], withCredentials: true});
   }
 
   joinRoom(data: any): void {

@@ -14,4 +14,8 @@ export class FoodService {
   getAllFoods() {
     return this._http.get<any>(`${this._url}/food`)
   }
+
+  getFoodById(foodId: string) {
+    return this._http.get<any>(`${this._url}/food/${foodId}`)
+  }
 }
