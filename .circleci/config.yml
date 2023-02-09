@@ -12,10 +12,10 @@ jobs:
       - checkout
       - run:
           name: Install Angular CLI
-          command: npm install -g @angular/cli
+          command: sudo npm install -g @angular/cli
       - run:
           name: Install dependencies
-          command: npm install
+          command: sudo npm install
       - run:
           name: Build the application
           command: ng build
