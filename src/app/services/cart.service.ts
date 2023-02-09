@@ -3,6 +3,8 @@ import {environment} from "../../environments/environment";
 import {io, Socket} from "socket.io-client";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Store} from "@ngrx/store";
+import {setCartDetail} from "../store/actions/cart.actions";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,8 @@ export class CartService {
   private _restURL = environment.BASE_URL
   private _url = environment.CART_SOCKET_API
   private socket: Socket;
-  cart!: object
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private _store: Store<{ roomDetail: any }>) {
     this.socket = io(this._url, {transports: ['websocket', 'polling', 'flashsocket'], withCredentials: true});
   }
 
@@ -37,9 +38,12 @@ export class CartService {
   getCartListener(): Observable<any> {
     try {
       return new Observable<any>((observable) => {
-        this.socket.on("get-cart", (date: any) => {
-          this.cart = date
-          observable.next(date)
+        this.socket.on("get-cart", (data: any) => {
+          // console.log(data)
+          // this._totalItem = data._totalItem
+          // this._subTotal = data._subTotal
+          this._store.dispatch(setCartDetail({totalItem: data.totalItem, subTotal: data.totalPrice}))
+          observable.next(data)
         })
         return () => {
           this.socket.disconnect();

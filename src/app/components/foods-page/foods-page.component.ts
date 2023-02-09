@@ -5,6 +5,7 @@ import {CartService} from "../../services/cart.service";
 import {NzNotificationService} from "ng-zorro-antd/notification";
 import {NzMessageService} from "ng-zorro-antd/message";
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-foods-page',
@@ -18,7 +19,7 @@ export class FoodsPageComponent implements OnInit {
 
   constructor(private _foodService: FoodService, private _cartService: CartService,
               private _notification: NzNotificationService, private _message: NzMessageService,
-              private _router: Router) {
+              private _router: Router, private _authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -37,19 +38,31 @@ export class FoodsPageComponent implements OnInit {
 
   addToCartHandler(foodId: string): void {
     const id = this._message.loading('Action in progress..', {nzDuration: 0}).messageId;
-    console.log("click")
     try {
-      this._cartService.addToCart(foodId, 1)
-      setTimeout(() => {
-        this._message.remove(id);
-        this._cartService.getCurrentCart()
-        // this._router.navigate(["dashboard/cart-page"]).then()
-      }, 2000);
+      this._authService.isLogged().subscribe({
+        next: () => {
+          this._cartService.addToCart(foodId, 1)
+          setTimeout(() => {
+            this._message.remove(id);
+            this._cartService.getCurrentCart()
+            this._router.navigate(["dashboard/cart-page"]).then()
+          }, 1000)
+        },
+        error: err => {
+          this._message.remove(id);
+          this._notification.create(
+            'error',
+            'Error',
+            "Please Login the system"
+          )
+          this._router.navigate(["login"]).then()
+        }
+      })
     } catch (e: any) {
       this._notification.create(
         'error',
-        'Network Error',
-        `Bad Request: ${e.message}`
+        'Internal Error',
+        `Application Error: ${e.message}`
       )
     }
   }

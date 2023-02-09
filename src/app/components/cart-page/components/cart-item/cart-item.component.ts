@@ -44,7 +44,11 @@ export class CartItemComponent implements OnInit {
   deleteItem(itemName: string) {
     try {
       this._cartService.deleteItem(itemName)
-      // this._cartService.getCurrentCart()
+      this._notification.create(
+        'info',
+        'Cart',
+        "Item Deleted"
+      )
     } catch (e: any) {
       this._notification.create(
         'error',
