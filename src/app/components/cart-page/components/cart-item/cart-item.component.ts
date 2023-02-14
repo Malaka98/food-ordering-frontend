@@ -68,17 +68,3 @@ export class CartItemComponent implements OnInit {
   }
 }
 
-// this._cartService.getCart().subscribe({
-//   next: value => {
-//     this.cart = value.message.cart
-//     this.totalPriceEvent.emit(value.message.totalPrice);
-//     console.log(this.cart)
-//   },
-//   error: err => {
-//     this._notification.create(
-//       'error',
-//       'Network Error',
-//       `Bad Request: ${err.message}`
-//     )
-//   }
-// })

@@ -27,6 +27,7 @@ import {CartItemComponent} from './components/cart-page/components/cart-item/car
 import {NzMessageModule} from "ng-zorro-antd/message";
 import {provideStoreDevtools, StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {cartDetailsReducer} from "./store/reducers/cart.reducer";
+import {CheckoutPageComponent} from './components/checkout-page/checkout-page.component';
 
 registerLocaleData(en);
 
@@ -43,7 +44,8 @@ registerLocaleData(en);
     FoodsPageComponent,
     PageNotFoundComponent,
     CartPageComponent,
-    CartItemComponent
+    CartItemComponent,
+    CheckoutPageComponent
   ],
   imports: [
     BrowserModule,

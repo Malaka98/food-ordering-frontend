@@ -10,6 +10,7 @@ import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.
 import {AuthGuard} from "./auth.guard";
 import {FoodsPageComponent} from "./components/foods-page/foods-page.component";
 import {CartPageComponent} from "./components/cart-page/cart-page.component";
+import {CheckoutPageComponent} from "./components/checkout-page/checkout-page.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "/home", pathMatch: "full"},
@@ -25,7 +26,7 @@ const routes: Routes = [
       // {path: "order-history", component: OrderHistoryComponent},
       {path: "cart-page", component: CartPageComponent},
       {path: "chat", component: ChatComponent},
-      // {path: "checkout", component: CheckoutComponent},
+      {path: "checkout", component: CheckoutPageComponent},
       {path: '**', component: PageNotFoundComponent}
     ],
     canActivate: [AuthGuard]
