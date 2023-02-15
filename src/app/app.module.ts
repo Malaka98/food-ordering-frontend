@@ -30,6 +30,7 @@ import {cartDetailsReducer} from "./store/reducers/cart.reducer";
 import {CheckoutPageComponent} from './components/checkout-page/checkout-page.component';
 import { PaymentSuccessComponent } from './components/checkout-page/components/payment-success/payment-success.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import {NzResultModule} from "ng-zorro-antd/result";
 
 registerLocaleData(en);
 
@@ -51,26 +52,27 @@ registerLocaleData(en);
     PaymentSuccessComponent,
     OrderHistoryComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    StoreModule.forRoot({cartDetail: cartDetailsReducer}, {}),
-    NzModalModule,
-    NzNotificationModule,
-    ReactiveFormsModule,
-    NzSkeletonModule,
-    NzMessageModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: !isDevMode(), // Restrict extension to log-only mode
-      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
-      trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
-      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
-    }),
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        StoreModule.forRoot({cartDetail: cartDetailsReducer}, {}),
+        NzModalModule,
+        NzNotificationModule,
+        ReactiveFormsModule,
+        NzSkeletonModule,
+        NzMessageModule,
+        StoreDevtoolsModule.instrument({
+            maxAge: 25, // Retains last 25 states
+            logOnly: !isDevMode(), // Restrict extension to log-only mode
+            autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+            trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
+            traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
+        }),
+        NzResultModule,
+    ],
   providers: [
     {provide: NZ_I18N, useValue: en_US},
     provideStoreDevtools({
