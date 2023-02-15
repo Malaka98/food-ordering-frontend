@@ -28,6 +28,8 @@ import {NzMessageModule} from "ng-zorro-antd/message";
 import {provideStoreDevtools, StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {cartDetailsReducer} from "./store/reducers/cart.reducer";
 import {CheckoutPageComponent} from './components/checkout-page/checkout-page.component';
+import { PaymentSuccessComponent } from './components/checkout-page/components/payment-success/payment-success.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
 registerLocaleData(en);
 
@@ -45,7 +47,9 @@ registerLocaleData(en);
     PageNotFoundComponent,
     CartPageComponent,
     CartItemComponent,
-    CheckoutPageComponent
+    CheckoutPageComponent,
+    PaymentSuccessComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,

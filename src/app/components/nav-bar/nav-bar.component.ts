@@ -26,6 +26,21 @@ export class NavBarComponent implements OnInit {
       next: value => {
         this.totalPrice = value.subTotal
         this.totalItem = value.totalItem
+        if (value.totalItem === 0) {
+          this._cartService.getCart().subscribe({
+            next: value1 => {
+              this.totalItem = value1.message.totalItem
+              this.totalPrice = value1.message.totalPrice
+            },
+            error: err => {
+              this._notification.create(
+                'error',
+                'Network Error',
+                `Bad Request: ${err.message}`
+              )
+            }
+          })
+        }
       },
       error: err => {
         this._notification.create(

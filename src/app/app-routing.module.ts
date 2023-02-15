@@ -11,6 +11,8 @@ import {AuthGuard} from "./auth.guard";
 import {FoodsPageComponent} from "./components/foods-page/foods-page.component";
 import {CartPageComponent} from "./components/cart-page/cart-page.component";
 import {CheckoutPageComponent} from "./components/checkout-page/checkout-page.component";
+import {PaymentSuccessComponent} from "./components/checkout-page/components/payment-success/payment-success.component";
+import {OrderHistoryComponent} from "./components/order-history/order-history.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "/home", pathMatch: "full"},
@@ -22,11 +24,13 @@ const routes: Routes = [
     path: "dashboard",
     component: DashboardComponent,
     children: [
-      // {path: "", redirectTo: "/dashboard/order-history", pathMatch: "full"},
+      {path: "", redirectTo: "/dashboard/order-history", pathMatch: "full"},
       // {path: "order-history", component: OrderHistoryComponent},
       {path: "cart-page", component: CartPageComponent},
       {path: "chat", component: ChatComponent},
       {path: "checkout", component: CheckoutPageComponent},
+      {path: "payment-success", component: PaymentSuccessComponent},
+      {path: "order-history", component: OrderHistoryComponent},
       {path: '**', component: PageNotFoundComponent}
     ],
     canActivate: [AuthGuard]

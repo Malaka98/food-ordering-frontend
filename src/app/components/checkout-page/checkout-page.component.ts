@@ -21,6 +21,7 @@ export class CheckoutPageComponent implements OnInit, AfterViewInit {
     this._cartService.getCart().subscribe({
       next: value => {
         this.cart = value.message
+        console.log(this.cart)
         if (value.message.cart.length !== 0) this.isDisable = false
         // Load the PayPal JS SDK script
         loadScript({'client-id': "AfW39J4mVf9OixXuEvpQBlTDZ21DnCWRT3cf_KsJiyAHjO1LD1-r1iR4zyNfrT1GolfAD0oCnUPTiBmE"}).then((paypal: any) => {
@@ -48,6 +49,24 @@ export class CheckoutPageComponent implements OnInit, AfterViewInit {
             onApprove: (data: any, actions: any) => {
               return actions.order.capture().then((details: any) => {
                 console.log("PAYMENT DETAIL", details);
+                this._cartService.checkout(details, this.cart).subscribe({
+                  next: value1 => {
+                    console.log("Payment", value1)
+                    this._notification.create(
+                      'success',
+                      'Payment Successful!',
+                      'your payment has been processed.'
+                    )
+                    router.navigate(["dashboard/payment-success"]).then()
+                  },
+                  error: err => {
+                    this._notification.create(
+                      'error',
+                      'Network Error',
+                      `Bad Request: ${err.message}`
+                    )
+                  }
+                })
               });
             },
             onCancel(data: any) {

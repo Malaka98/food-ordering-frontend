@@ -1,0 +1,88 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-white">
+  <div class="py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto sm:px-2 lg:px-8">
+      <div class="max-w-2xl mx-auto px-4 lg:max-w-4xl lg:px-0">
+        <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">Order history</h1>
+        <p class="mt-2 text-sm text-gray-500">Check the status of recent orders, manage returns, and discover similar
+          products.</p>
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <h2 class="sr-only">Recent orders</h2>
+      <div class="max-w-7xl mx-auto sm:px-2 lg:px-8">
+        <div class="max-w-2xl mx-auto space-y-8 sm:px-4 lg:max-w-4xl lg:px-0">
+          <div *ngFor="let item of orderHistory">
+            <div class="bg-white border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border">
+              <h3 class="sr-only">Order placed on
+                <time datetime="2021-07-06">Jul 6, 2021</time>
+              </h3>
+
+              <div class="flex items-center p-4 border-b border-gray-200 sm:p-6 sm:grid sm:grid-cols-4 sm:gap-x-6">
+
+                <div>
+                  <dt class="font-medium text-gray-900">Order number</dt>
+                  <dd class="mt-1 text-gray-500">{{item._id}}</dd>
+                </div>
+                <!--                <div class="hidden sm:block">-->
+                <!--                  <dt class="font-medium text-gray-900">Date placed</dt>-->
+                <!--                  <dd class="mt-1 text-gray-500">-->
+                <!--                    <time datetime="2021-07-06">Jul 6, 2021</time>-->
+                <!--                  </dd>-->
+                <!--                </div>-->
+                <div>
+                  <dt class="font-medium text-gray-900">Total Item</dt>
+                  <dd class="mt-1 font-medium text-gray-900">{{item.orderDetails.totalItem}}</dd>
+                </div>
+                <div>
+                  <dt class="font-medium text-gray-900">Total amount</dt>
+                  <dd class="mt-1 font-medium text-gray-900">${{item.orderDetails.totalPrice}}</dd>
+                </div>
+
+              </div>
+
+              <!-- Products -->
+              <h4 class="sr-only">Items</h4>
+              <ul role="list" class="divide-y divide-gray-200">
+                <div *ngFor="let orderItem of item.orderDetails.cart">
+                  <li class="p-4 sm:p-6">
+                    <div class="flex items-center sm:items-start">
+                      <div class="flex-shrink-0 w-20 h-20 bg-gray-200 rounded-lg overflow-hidden sm:w-40 sm:h-40">
+                        <img [src]="orderItem.itemUri"
+                             alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps."
+                             class="w-full h-full object-center object-cover">
+                      </div>
+                      <div class="flex-1 ml-6 text-sm">
+                        <div class="font-medium text-gray-900 sm:flex sm:justify-between">
+                          <h5>{{orderItem.name}}</h5>
+                          <p class="mt-2 sm:mt-0">${{orderItem.itemPrice}}</p>
+                        </div>
+                        <!--                        <p class="hidden text-gray-500 sm:block sm:mt-2">Are you a minimalist looking for a compact-->
+                        <!--                          carry option? The Micro Backpack is the perfect size for your essential everyday carry items.-->
+                        <!--                          Wear it like a backpack or carry it like a satchel for all-day use.</p>-->
+                      </div>
+                    </div>
+
+                    <div class="mt-6 sm:flex sm:justify-between">
+                      <!--                  <div class="flex items-center">-->
+                      <!--                    &lt;!&ndash; Heroicon name: solid/check-circle &ndash;&gt;-->
+                      <!--                    <svg class="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">-->
+                      <!--                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />-->
+                      <!--                    </svg>-->
+                      <!--                    <p class="ml-2 text-sm font-medium text-gray-500">Delivered on <time datetime="2021-07-12">July 12, 2021</time></p>-->
+                      <!--                  </div>-->
+
+                    </div>
+                  </li>
+                </div>
+                <!-- More products... -->
+              </ul>
+            </div>
+          </div>
+          <!-- More orders... -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
